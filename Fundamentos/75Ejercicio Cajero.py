@@ -13,15 +13,27 @@ while funcion:
     opcion=int(input())
     if opcion==1:
         monto=int(input("Monto a ingresar: "))
-        cuenta.setSaldo(int(cuenta.getSaldo())+monto)
+        if monto>0:
+            cuenta.setSaldo(int(cuenta.getSaldo())+monto)
+        else:
+            print("Monto Invalido")
     elif opcion==2:
         monto=int(input("Monto a retirar: "))
+        if monto>0:
+            if int(cuenta.getSaldo())-monto >= 0:
+                cuenta.setSaldo(int(cuenta.getSaldo())-monto)
+            else:
+                print("Ud. No cuenta con saldo suficiente")
+        else:
+            print("Monto Invalido")  
+        """
         #completar para que no retire mas dinero del que tiene perro
         if int(cuenta.getSaldo())-monto < 0:
             print("Ud. No cuenta con saldo suficiente")
             #next
-        else:
+        elif int(cuenta.getSaldo())-monto >= 0:
             cuenta.setSaldo(int(cuenta.getSaldo())-monto)
+        """  
     elif opcion==3:
         print("Saldo en cuenta: "+ str(cuenta.getSaldo()))
     elif opcion==4:
